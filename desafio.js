@@ -1,5 +1,6 @@
 // importações
 const prompt = require('prompt');
+const emoji = require('console-emoji');
 
 // variaveis
 
@@ -29,7 +30,7 @@ function gerarGrupoAleatorio(quantidade){
 
 
 
-function montarDesafio(quantidade) {
+function Desafio(quantidade) {
     let grupo1 = gerarGrupoAleatorio(quantidade);
     let grupo2 =  gerarGrupoAleatorio(quantidade);
     let respostasCorretas = []
@@ -59,21 +60,25 @@ function montarDesafio(quantidade) {
         if(err){
             return onErr(err);
         }
+        
+        emoji(' \n :star: Resultado :star: ');
 
         // faz a comparação da resposta do usuario
         let correcao = respostasCorretas.map( function(element, index) {
-            return element == result[index] ? 'OK' : 'X';
+            // return element == result[index] ? 'OK' : 'X';
+            return element == result[index] ? emoji(`Questão ${index+1} `, 'ok') : emoji(`Questão ${index+1} `, 'err');
         })
         
-        console.log(' \n -- Resultado -- ');
-        console.log(correcao);
         
+        //console.log(correcao);
+
         return result
     })
 }
-//console.log(montarDesafio(quantidadeCalculos))
+//console.log(Desafio(quantidadeCalculos))
 
-montarDesafio(quantidadeCalculos)
+Desafio(quantidadeCalculos)
+
 
 function onErr(err) {
     console.log(err);
