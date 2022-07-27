@@ -6,7 +6,7 @@ const emoji = require('console-emoji');
 
 let valorMin = 1;
 let valorMax = 10;
-let quantidadeCalculos = 3;
+let quantidadeCalculos = 5;
 
 prompt.start();
 
